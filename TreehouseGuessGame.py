@@ -4,8 +4,10 @@ import random
 # Variables
 welcomemsg = "Welcome To The Game."
 msg = welcomemsg.split()
+score = 0
 guesses = 0
 right_number = random.randint(1, 11)
+
 
 # Welcome message
 for word in msg:
@@ -23,7 +25,8 @@ else:
     print("Hi there {}.".format(first_name))
     ready = input("Are you ready?: Y/N  ")
     if ready.lower() == "y":
-        print("Okay. I'm thinking of a number between 1-10. \nLet's see how many tries it takes for you to guess it. ")
+        print("Okay. I'm thinking of a number between 1-10. "
+              "\nLet's see how many tries it takes for you to guess it.")
     else:
         print("Okay. Come back when you are.")
         exit()
@@ -44,11 +47,12 @@ while first_name:
         print("You guessed to low, try again")
 
     if guess == right_number:
-        print("Hey, you must be lucky!")
+        score = guesses
+        print("Good job! You guessed a total of {} times.".format(score + 1))
         time.sleep(0.5)
         print("The Game will now terminate. Thanks for playing!")
         time.sleep(1)
         exit()
     else:
         guesses = guesses + 1
-        print("Oops, seems like that was wrong. Total number of tries: {}".format(guesses))
+        print("Total number of tries: {}".format(guesses))
