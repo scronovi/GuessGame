@@ -36,23 +36,26 @@ time.sleep(2)
 
 # Game function
 while first_name:
-    guess = int(input("What is your guess, {}?  ".format(first_name)))
-    if guess >= 11:
-        raise ValueError("Input number is too high")
-    elif guess <= 0:
-        raise ValueError("Input number is too low")
-    if guess > right_number:
-        print("You guessed to high, try again")
-    elif guess < right_number:
-        print("You guessed to low, try again")
-
-    if guess == right_number:
-        score = guesses
-        print("Good job! You guessed a total of {} times.".format(score + 1))
-        time.sleep(0.5)
-        print("The Game will now terminate. Thanks for playing!")
-        time.sleep(1)
-        exit()
+    try:
+        guess = int(input("What is your guess, {}?  ".format(first_name)))
+    except ValueError:
+        print("You need to enter a number! Don't worry, I won't count this.")
     else:
-        guesses = guesses + 1
-        print("Total number of tries: {}".format(guesses))
+        if guess >= 11:
+            raise ValueError("Input number is too high")
+        elif guess <= 0:
+            raise ValueError("Input number is too low")
+        if guess > right_number:
+            print("You guessed to high, try again")
+        elif guess < right_number:
+            print("You guessed to low, try again")
+        if guess == right_number:
+            score = guesses
+            print("Good job! You guessed a total of {} times.".format(score + 1))
+            time.sleep(0.5)
+            print("The Game will now terminate. Thanks for playing!")
+            time.sleep(1)
+            exit()
+        else:
+            guesses = guesses + 1
+            print("Total number of tries: {}".format(guesses))
