@@ -38,13 +38,13 @@ time.sleep(2)
 while first_name:
     try:
         guess = int(input("What is your guess, {}?  ".format(first_name)))
-    except ValueError:
-        print("You need to enter a number! Don't worry, I won't count this.")
-    else:
         if guess >= 11:
-            raise ValueError("Input number is too high")
+            raise ValueError
         elif guess <= 0:
-            raise ValueError("Input number is too low")
+            raise ValueError
+    except ValueError:
+        print("You need to enter a number between 1-10! Don't worry, I won't count this.")
+    else:
         if guess > right_number:
             print("You guessed to high, try again")
         elif guess < right_number:
